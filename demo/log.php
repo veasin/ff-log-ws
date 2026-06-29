@@ -2,9 +2,11 @@
 /**
  * ff-log-ws 使用示例
  * 
- * 配合 demo/swoole.ws.php 使用
- * 启动: php demo/swoole.ws.php &
- * 运行: php demo/app.php
+ * 服务端（任选其一）:
+ *   php demo/ws.php          (PHP，推荐)
+ *   php demo/ws.swoole.php   (Swoole)
+ * 
+ * 运行: php demo/log.php
  */
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -21,4 +23,4 @@ log('数据库查询', ['sql' => 'SELECT * FROM users', 'ms' => 3.2], 'debug');
 log('发生错误: {msg}', ['msg' => '连接超时'], 'error');
 
 echo "已发送 " . date('H:i:s') . "\n";
-echo "打开 demo/1.html 连接 ws://thiz.cn:10010 查看日志\n";
+echo "打开 demo/demo.html 查看日志\n";

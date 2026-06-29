@@ -3,7 +3,7 @@
  * Swoole WebSocket 服务器
  * 接收 HTTP POST /log 写入的日志，广播到所有 WebSocket 客户端
  * 
- * 启动: php demo/swoole.ws.php
+ * 启动: php demo/ws.swoole.php
  * 测试: curl -X POST http://127.0.0.1:9501/log -d '{"app":"test","logs":[]}'
  */
 use Swoole\WebSocket\Server;

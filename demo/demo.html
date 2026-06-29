@@ -18,7 +18,7 @@ function connect(){
 			console.group(`[${data.app}]`, new Date().toLocaleString());
 			(data.logs || []).forEach(log => {
 				const fn = console[log.level] || console.log;
-				fn(`[${log.level}]`, ...(log.context || []));
+				fn(`[${log.level}] ${log.message}`, log.context ?? '');
 			});
 			console.groupEnd();
 		}catch(e){

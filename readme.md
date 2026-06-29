@@ -46,6 +46,25 @@ ws('http://127.0.0.1:9501/log', ['timeout' => 0.1]); // 自定义超时
 }
 ```
 
+## Demo
+
+### 启动服务端
+
+```bash
+php demo/ws.php              # PHP（推荐）
+php demo/ws.swoole.php       # Swoole
+```
+
+### 测试流程
+
+**终端 1** — 启动服务端，**浏览器** — 打开 `demo/demo.html`（F12 → Console），**终端 2**：
+
+```bash
+php demo/log.php
+```
+
+在浏览器 Console 中实时观察日志输出。
+
 ## 测试
 
 ```bash
