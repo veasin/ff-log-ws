@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Log Viewer</title>
+</head>
+<body>
+<div>
+	<input type="url" value="ws://127.0.0.1:9501" />
+	<button onclick="connect()">connect</button>
+</div>
+<script>
+function connect(){
+	const ws = new WebSocket(document.querySelector('input').value);
+	ws.addEventListener('message', event => {
+		try{
+			const data = JSON.parse(event.data);
+			console.group(`[${data.app}]`, new Date().toLocaleString());
+			(data.logs || []).forEach(log => {
+				const fn = console[log.level] || console.log;
+				fn(`[${log.level}]`, ...(log.context || []));
+			});
+			console.groupEnd();
+		}catch(e){
+			console.log(event.data);
+		}
+	});
+	ws.addEventListener('open', () => console.log('ws connected'));
+	ws.addEventListener('close', () => console.log('ws closed'));
+}
+if(document.querySelector('input').value) connect();
+</script>
+</body>
+</html>
